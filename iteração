@@ -1,0 +1,7 @@
+# iterando lista com for
+# o loop percorre cada elemento da lista diretamente
+
+lista = ['Douglas','Ricardo','Rafael']
+
+for nome in lista: 
+    print(nome)
