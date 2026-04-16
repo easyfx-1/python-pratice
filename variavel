@@ -1,0 +1,16 @@
+#Uma variável é um nome que guarda um valor
+
+#variavel = 'valor' 
+
+Nome = 'Rafael'
+Idade = 27
+
+print(f'{Nome} tem {Idade} anos.')
+
+
+
+
+
+
+
+
