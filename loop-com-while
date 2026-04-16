@@ -2,3 +2,6 @@
 
 while True:
     idade = input('digite sua idade: ')
+
+
+#para parar o loop de while use break
