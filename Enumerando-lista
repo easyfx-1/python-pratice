@@ -1,0 +1,6 @@
+#Enumerando lista com ennumerate
+
+lista = ['Rafael','Lucas','Davi']
+
+for indice, nome in enumerate(lista):
+    print(indice, nome)
