@@ -1,0 +1,6 @@
+#Usando loop de for em lista
+
+lista = ['Rafael','Lucas','Davi']
+
+for nome in lista:
+    print(nome)
