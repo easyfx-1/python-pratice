@@ -1,0 +1,9 @@
+#Usando Return em Def
+
+def soma(numero):
+    return numero * 7
+
+numero = 2
+
+print(soma(numero))
+
