@@ -1,0 +1,9 @@
+# TRY / EXCEPT
+# try = tenta executar o código
+# except = executa se der erro
+# usado para evitar que o programa quebre com entradas inválidas
+
+try:
+    idade = int(input('Qual sua idade: '))
+except: 
+    print('Isso não é um número valido!')
