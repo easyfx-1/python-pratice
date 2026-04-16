@@ -1,0 +1,10 @@
+#Criando funções
+
+def nome(nome):
+    print("Bom dia", nome)
+
+def nome2(nome):
+    print("Boa noite", nome)
+
+nome("Rafael")
+nome2("Rafael")
