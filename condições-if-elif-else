@@ -1,0 +1,19 @@
+#Usando condições if, elif, else
+
+nome = input('Digite seu nome: ')
+idade = int(input('Digite sua idade: '))
+quantidade_de_letras = len(nome)
+
+if idade >= 18:
+    print('Maior de idade')
+else:
+    print('Menor de idade')
+
+if 5 <= quantidade_de_letras <= 8:
+    print('Tem um nome médio') 
+
+elif quantidade_de_letras <= 4:
+    print('Tem um nome curto')
+
+else:
+    print('Tem um nome grande')
