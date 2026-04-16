@@ -1,0 +1,4 @@
+#criando um loop com while
+
+while True:
+    idade = input('digite sua idade: ')
