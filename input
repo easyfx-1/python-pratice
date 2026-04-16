@@ -1,0 +1,6 @@
+
+#Usando input para entrada de dados
+
+entrada = input('Digite seu nome: ')
+
+print(f'Meu nome é {entrada}')
