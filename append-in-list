@@ -1,0 +1,9 @@
+#adicionando nomes a lista
+
+lista = []
+
+
+nomes = input('Digite um nome: ')
+lista.append(nomes)
+
+print(lista)
