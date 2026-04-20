@@ -1,0 +1,8 @@
+# .items()
+# usado em dicionários
+# retorna chave e valor ao mesmo tempo
+
+dicionario = {'nome': 'Rafael', 'idade': 27}
+
+for chave, valor in dicionario.items():
+    print(chave, valor)
