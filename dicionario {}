@@ -1,0 +1,9 @@
+# DICIONÁRIO {}
+# estrutura que armazena dados em formato chave: valor
+
+dicionario = {
+    'nome': 'Rafael',
+    'idade': 27
+}
+
+print(dicionario['nome'])
