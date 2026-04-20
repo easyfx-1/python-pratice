@@ -6,4 +6,4 @@ dicionario = {
     'idade': 27
 }
 
-print(dicionario['nome'])
+print(f'Nome: {dicionario['nome']}, Idade: {dicionario ['idade']}')
