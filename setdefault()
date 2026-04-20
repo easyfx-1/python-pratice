@@ -1,0 +1,9 @@
+# setdefault()
+# cria uma chave se ela não existir
+# se já existir, não altera o valor
+
+dicionario = {'nome': 'Rafael'}
+
+dicionario.setdefault('idade', 27)
+
+print(dicionario)
