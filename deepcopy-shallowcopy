@@ -1,0 +1,168 @@
+# 🧠 Shallow Copy vs Deep Copy (explicação real)
+
+## 📌 Primeiro: como Python guarda dados
+
+Quando você cria uma lista:
+
+```python
+lista = [1, 2, 3]
+```
+
+👉 o Python cria **um objeto na memória**
+👉 a variável `lista` só aponta pra esse objeto
+
+---
+
+## 🚨 Isso NÃO é cópia
+
+```python
+lista1 = [1, 2, 3]
+lista2 = lista1
+```
+
+👉 aqui NÃO foi criada outra lista
+
+```text
+lista1 ─┐
+        ├──> [1, 2, 3]
+lista2 ─┘
+```
+
+👉 duas variáveis apontando pro mesmo lugar
+
+---
+
+## 🔹 SHALLOW COPY (cópia rasa)
+
+```python
+import copy
+
+lista1 = [1, 2, [3, 4]]
+lista2 = copy.copy(lista1)
+```
+
+👉 agora temos DUAS listas diferentes por fora
+
+```text
+lista1 ──> [1, 2, 🔗]
+lista2 ──> [1, 2, 🔗]
+                 ↓
+               [3, 4]
+```
+
+👉 a lista interna ainda é a MESMA
+
+---
+
+## 🧪 Teste prático
+
+```python
+lista2[2][0] = 99
+
+print(lista1)
+print(lista2)
+```
+
+### Resultado:
+
+```text
+[1, 2, [99, 4]]
+[1, 2, [99, 4]]
+```
+
+👉 mudou nas duas!
+
+---
+
+## 🧠 Explicação simples
+
+```text
+Shallow copy copia a "caixa"
+mas não copia o que está dentro dela
+```
+
+---
+
+## 🔹 DEEP COPY (cópia profunda)
+
+```python
+import copy
+
+lista1 = [1, 2, [3, 4]]
+lista2 = copy.deepcopy(lista1)
+```
+
+👉 agora tudo é copiado
+
+```text
+lista1 ──> [1, 2, [3, 4]]
+lista2 ──> [1, 2, [3, 4]]
+```
+
+👉 são objetos completamente separados
+
+---
+
+## 🧪 Teste
+
+```python
+lista2[2][0] = 99
+
+print(lista1)
+print(lista2)
+```
+
+### Resultado:
+
+```text
+[1, 2, [3, 4]]
+[1, 2, [99, 4]]
+```
+
+👉 agora não afeta o original
+
+---
+
+## 🧠 Explicação simples
+
+```text
+Deep copy copia a caixa
+e tudo que está dentro dela também
+```
+
+---
+
+## ⚖️ Comparação final
+
+| Tipo       | O que copia | Problema                   |
+| ---------- | ----------- | -------------------------- |
+| =          | nada        | mesma memória              |
+| copy()     | só fora     | compartilha dados internos |
+| deepcopy() | tudo        | mais pesado                |
+
+---
+
+## 🎯 Forma de entender de vez
+
+```text
+=          → mesmo objeto
+copy()     → objeto novo, conteúdo interno compartilhado
+deepcopy() → objeto totalmente novo
+```
+
+---
+
+## 🔥 Quando usar na prática
+
+* Dados simples → tanto faz
+* Dados com lista dentro de lista → use deepcopy
+* Quer performance → prefira shallow se possível
+
+---
+
+## 🧠 Frase final
+
+```text
+Se tem estrutura dentro de estrutura,
+shallow copy pode te trair
+```
