@@ -1,0 +1,19 @@
+# 📘 append(), extend(), add() e set em Python
+
+## 🔹 append()
+Adiciona um único elemento ao final de uma lista.
+
+## 🔹 extend()
+Adiciona vários elementos à lista, separando cada item.
+
+## 🔹 add()
+Adiciona um elemento em um conjunto (set). Não permite valores repetidos.
+
+## 🔹 set
+Estrutura que armazena apenas valores únicos (sem duplicação).
+
+## 🧠 Resumo
+- append() → 1 item na lista  
+- extend() → vários itens na lista  
+- add() → 1 item no set  
+- set → não aceita duplicados  
