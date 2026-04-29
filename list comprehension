@@ -1,0 +1,129 @@
+# ==========================================
+# LIST COMPREHENSION EM PYTHON (GUIA COMPLETO)
+# ==========================================
+
+# ------------------------------------------
+# O que é List Comprehension
+# ------------------------------------------
+# É uma forma curta e elegante de criar listas
+# baseada em loops (for) e condições (if)
+
+# Estrutura básica:
+# [expressão for item in iterável]
+
+
+# ------------------------------------------
+# Exemplo básico
+# ------------------------------------------
+
+# Forma tradicional
+numeros = [1, 2, 3, 4, 5]
+dobro = []
+
+for n in numeros:
+    dobro.append(n * 2)
+
+print("Forma tradicional:", dobro)
+
+# List comprehension
+dobro_lc = [n * 2 for n in numeros]
+print("List comprehension:", dobro_lc)
+
+
+# ------------------------------------------
+# Com condição (if)
+# ------------------------------------------
+# Filtrando apenas números pares
+
+pares = [n for n in numeros if n % 2 == 0]
+print("\nNúmeros pares:", pares)
+
+
+# ------------------------------------------
+# Com if/else (expressão condicional)
+# ------------------------------------------
+# Se for par → "par"
+# Se não → "ímpar"
+
+resultado = ["par" if n % 2 == 0 else "ímpar" for n in numeros]
+print("\nPar ou ímpar:", resultado)
+
+
+# ------------------------------------------
+# Trabalhando com strings
+# ------------------------------------------
+
+nomes = ["rafael", "ana", "joao"]
+
+nomes_maiusculos = [nome.upper() for nome in nomes]
+print("\nNomes em maiúsculo:", nomes_maiusculos)
+
+
+# ------------------------------------------
+# List comprehension com dois loops (aninhado)
+# ------------------------------------------
+
+lista1 = [1, 2]
+lista2 = [10, 20]
+
+combinacoes = [(x, y) for x in lista1 for y in lista2]
+print("\nCombinações:", combinacoes)
+
+
+# ------------------------------------------
+# Criando listas com range()
+# ------------------------------------------
+
+quadrados = [x**2 for x in range(6)]
+print("\nQuadrados:", quadrados)
+
+
+# ------------------------------------------
+# Exemplo realista
+# ------------------------------------------
+# Filtrando usuários ativos
+
+usuarios = [
+    {"nome": "Rafael", "ativo": True},
+    {"nome": "Ana", "ativo": False},
+    {"nome": "Carlos", "ativo": True},
+]
+
+usuarios_ativos = [u["nome"] for u in usuarios if u["ativo"]]
+print("\nUsuários ativos:", usuarios_ativos)
+
+
+# ------------------------------------------
+# Quando NÃO usar list comprehension
+# ------------------------------------------
+# Evite quando a lógica ficar complexa demais
+
+# Exemplo ruim (difícil de ler):
+# resultado = [x*2 if x > 10 else x+2 for x in numeros if x != 3]
+
+# Prefira isso:
+resultado = []
+for x in numeros:
+    if x != 3:
+        if x > 10:
+            resultado.append(x * 2)
+        else:
+            resultado.append(x + 2)
+
+print("\nExemplo legível:", resultado)
+
+
+# ------------------------------------------
+# Resumo final
+# ------------------------------------------
+# [expressão for item in lista]
+# [expressão for item in lista if condição]
+# [expressão_if if condição else expressão_else for item in lista]
+#
+# Vantagens:
+# - Código mais curto
+# - Mais rápido em muitos casos
+#
+# Desvantagens:
+# - Pode ficar difícil de ler se exagerar
+# ------------------------------------------
