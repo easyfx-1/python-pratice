@@ -1,0 +1,123 @@
+# ==========================================
+# MAPEAMENTO DE DADOS EM LISTAS (PYTHON)
+# ==========================================
+
+# ------------------------------------------
+# O que é mapeamento?
+# ------------------------------------------
+# Mapeamento é aplicar uma transformação
+# em cada elemento de uma lista
+
+# Exemplo:
+# [1, 2, 3] → dobrar → [2, 4, 6]
+
+
+# ------------------------------------------
+# Forma 1: Loop tradicional
+# ------------------------------------------
+
+numeros = [1, 2, 3, 4]
+
+dobro = []
+for n in numeros:
+    dobro.append(n * 2)
+
+print("Loop tradicional:", dobro)
+
+
+# ------------------------------------------
+# Forma 2: Usando map()
+# ------------------------------------------
+# map aplica uma função em cada item
+
+def dobrar(x):
+    return x * 2
+
+resultado_map = list(map(dobrar, numeros))
+print("Usando map():", resultado_map)
+
+
+# ------------------------------------------
+# Forma 3: map() com lambda
+# ------------------------------------------
+# Função anônima direto no map
+
+resultado_lambda = list(map(lambda x: x * 2, numeros))
+print("map + lambda:", resultado_lambda)
+
+
+# ------------------------------------------
+# Forma 4: List Comprehension (mais usada)
+# ------------------------------------------
+
+resultado_lc = [x * 2 for x in numeros]
+print("List comprehension:", resultado_lc)
+
+
+# ------------------------------------------
+# Mapeando strings
+# ------------------------------------------
+
+nomes = ["rafael", "ana", "joao"]
+
+maiusculos = list(map(str.upper, nomes))
+print("\nNomes em maiúsculo:", maiusculos)
+
+
+# ------------------------------------------
+# Mapeando lista de dicionários
+# ------------------------------------------
+# Extraindo ou transformando dados
+
+usuarios = [
+    {"nome": "Rafael", "idade": 25},
+    {"nome": "Ana", "idade": 30},
+]
+
+# Pegando só os nomes
+nomes_usuarios = [u["nome"] for u in usuarios]
+print("\nNomes:", nomes_usuarios)
+
+# Aumentando idade
+idades_atualizadas = [u["idade"] + 1 for u in usuarios]
+print("Idades +1:", idades_atualizadas)
+
+
+# ------------------------------------------
+# Mapeamento com múltiplas listas
+# ------------------------------------------
+
+lista1 = [1, 2, 3]
+lista2 = [10, 20, 30]
+
+soma = list(map(lambda x, y: x + y, lista1, lista2))
+print("\nSoma de duas listas:", soma)
+
+
+# ------------------------------------------
+# Exemplo realista
+# ------------------------------------------
+# Aplicando desconto em preços
+
+precos = [100, 200, 300]
+
+precos_com_desconto = [p * 0.9 for p in precos]
+print("\nPreços com desconto:", precos_com_desconto)
+
+
+# ------------------------------------------
+# Quando usar cada um
+# ------------------------------------------
+# Loop        → quando precisa de mais controle
+# map()       → quando já tem uma função pronta
+# lambda      → funções rápidas e simples
+# list comp   → mais usado (limpo e legível)
+
+
+# ------------------------------------------
+# Resumo final
+# ------------------------------------------
+# map(func, lista) → aplica função em cada item
+# lambda → função rápida sem nome
+# [exp for x in lista] → forma mais pythonica
+# ------------------------------------------
