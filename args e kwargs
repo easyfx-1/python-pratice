@@ -1,0 +1,104 @@
+# ==========================================
+# ARGS E KWARGS EM PYTHON (GUIA MELHORADO)
+# ==========================================
+
+# ------------------------------------------
+# O que é *args
+# ------------------------------------------
+# *args permite receber vários argumentos posicionais
+# Ele "empacota" os valores em uma TUPLA
+
+def exemplo_args(*args):
+    print("Empacotado em args (tupla):", args)
+
+exemplo_args(1, 2, 3, 4)
+
+
+# ------------------------------------------
+# O que é **kwargs
+# ------------------------------------------
+# **kwargs permite receber vários argumentos nomeados
+# Ele "empacota" os dados em um DICIONÁRIO
+
+def exemplo_kwargs(**kwargs):
+    print("Empacotado em kwargs (dict):", kwargs)
+
+exemplo_kwargs(nome="Rafael", idade=25, cidade="SP")
+
+
+# ------------------------------------------
+# Empacotamento (packing)
+# ------------------------------------------
+# Quando você PASSA vários valores e a função recebe com *args ou **kwargs
+
+def cadastro(**dados):
+    print("\nEmpacotamento kwargs:")
+    print(dados)
+
+cadastro(nome="Ana", idade=30, pais="Brasil")
+
+
+# ------------------------------------------
+# Desempacotamento (unpacking) com kwargs
+# ------------------------------------------
+# Quando você tem um dicionário e usa ** para "espalhar" os dados
+
+def mostrar_usuario(nome, idade, pais):
+    print("\nDesempacotamento kwargs:")
+    print(f"Nome: {nome}")
+    print(f"Idade: {idade}")
+    print(f"País: {pais}")
+
+usuario = {
+    "nome": "Carlos",
+    "idade": 28,
+    "pais": "Brasil"
+}
+
+# Aqui acontece o desempacotamento
+mostrar_usuario(**usuario)
+
+
+# ------------------------------------------
+# Combinação completa (args + kwargs)
+# ------------------------------------------
+# Ordem correta:
+# 1. parâmetros normais
+# 2. *args
+# 3. **kwargs
+
+def funcao_completa(a, b, *args, **kwargs):
+    print("\nFunção completa:")
+    print("a:", a)
+    print("b:", b)
+    print("args:", args)
+    print("kwargs:", kwargs)
+
+funcao_completa(1, 2, 3, 4, nome="João", idade=20)
+
+
+# ------------------------------------------
+# Exemplo realista (uso prático)
+# ------------------------------------------
+# Simulando criação de usuário com dados extras dinâmicos
+
+def criar_usuario(nome, **extras):
+    print("\nUsuário criado:")
+    print("Nome:", nome)
+    
+    # extras pode ter qualquer coisa (email, idade, etc)
+    for chave, valor in extras.items():
+        print(f"{chave}: {valor}")
+
+criar_usuario("Maria", idade=22, email="maria@email.com", ativo=True)
+
+
+# ------------------------------------------
+# Resumo final
+# ------------------------------------------
+# *args   → empacota vários valores → TUPLA
+# **kwargs → empacota nome=valor → DICIONÁRIO
+#
+# packing   → quando a função RECEBE (*args / **kwargs)
+# unpacking → quando você usa * ou ** para espalhar dados
+# ------------------------------------------
