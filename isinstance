@@ -1,0 +1,63 @@
+# isinstance() em Python
+
+"""
+📌 O que é:
+A função isinstance() verifica se um objeto é de um determinado tipo.
+
+📍 Sintaxe:
+isinstance(objeto, tipo)
+
+- objeto → variável que será testada
+- tipo → tipo de dado (int, str, list, etc.)
+
+Retorno:
+- True → se for do tipo
+- False → se não for
+"""
+
+# =========================
+# EXEMPLOS BÁSICOS
+# =========================
+
+# Inteiro
+x = 10
+print(isinstance(x, int))  # True
+
+# String
+nome = "Rafael"
+print(isinstance(nome, str))  # True
+
+# Lista
+lista = [1, 2, 3]
+print(isinstance(lista, list))  # True
+
+
+# =========================
+# MÚLTIPLOS TIPOS
+# =========================
+
+x = 10
+print(isinstance(x, (int, float)))  # True
+
+
+# =========================
+# EXEMPLO PRÁTICO
+# =========================
+
+idade = 20
+
+if isinstance(idade, int):
+    print("Idade válida")
+else:
+    print("Tipo inválido")
+
+
+# =========================
+# LISTA COM TIPOS MISTOS
+# =========================
+
+dados = [10, "texto", 5.5, True, 20]
+
+for item in dados:
+    if isinstance(item, int):
+        print(f"{item} é inteiro")
