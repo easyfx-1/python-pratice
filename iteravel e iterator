@@ -1,0 +1,110 @@
+# ITERÁVEL vs ITERADOR vs iter()
+
+"""
+📌 Esses conceitos são fundamentais em Python, principalmente em loops (for).
+
+========================================================
+🧠 1. ITERÁVEL (Iterable)
+========================================================
+
+📍 O que é:
+Um iterável é qualquer objeto que você consegue percorrer (loop).
+
+👉 Ele NÃO é o que “anda sozinho”.
+👉 Ele apenas pode ser percorrido.
+
+📌 Exemplos de iteráveis:
+- list
+- str
+- tuple
+- set
+- dict
+
+"""
+
+lista = [1, 2, 3]
+
+for item in lista:  # lista é ITERÁVEL
+    print(item)
+
+
+"""
+========================================================
+🧠 2. ITERADOR (Iterator)
+========================================================
+
+📍 O que é:
+Um iterador é o objeto que realmente percorre os dados.
+
+👉 Ele lembra onde parou.
+👉 Ele usa next() para avançar.
+
+📌 Características:
+- tem __next__()
+- tem __iter__()
+
+"""
+
+lista = [1, 2, 3]
+
+iterador = iter(lista)  # transforma iterável em iterador
+
+print(next(iterador))  # 1
+print(next(iterador))  # 2
+print(next(iterador))  # 3
+
+# print(next(iterador))  # ERRO: StopIteration
+
+
+"""
+========================================================
+🧠 3. FUNÇÃO iter()
+========================================================
+
+📍 O que é:
+A função iter() transforma um ITERÁVEL em ITERADOR.
+
+"""
+
+texto = "abc"
+
+it = iter(texto)
+
+print(next(it))  # a
+print(next(it))  # b
+print(next(it))  # c
+
+
+"""
+========================================================
+🔥 DIFERENÇA RESUMIDA
+========================================================
+
+📌 ITERÁVEL:
+- Pode ser percorrido
+- Ex: lista, string
+- Não guarda posição
+
+📌 ITERADOR:
+- Percorre os dados
+- Lembra da posição
+- Usa next()
+
+📌 iter():
+- Converte iterável → iterador
+
+"""
+
+"""
+========================================================
+🧪 EXEMPLO FINAL (VISUAL)
+========================================================
+"""
+
+lista = [10, 20, 30]   # ITERÁVEL
+
+it = iter(lista)        # ITERADOR
+
+print(next(it))  # 10
+print(next(it))  # 20
+print(next(it))  # 30
