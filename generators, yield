@@ -1,0 +1,95 @@
+# =========================================
+# Generators, Yield, Iteráveis e Iteradores
+# =========================================
+
+# 🔹 ITERÁVEL
+# Um iterável é qualquer objeto que pode ser percorrido com um loop (for)
+# Exemplos: lista, string, tupla, dicionário
+
+lista = [1, 2, 3]
+
+for item in lista:
+    print(item)  # percorre cada elemento
+
+
+# 🔹 ITERADOR
+# Um iterador é o objeto que realmente percorre o iterável
+# Ele usa as funções:
+# iter() -> cria o iterador
+# next() -> pega o próximo valor
+
+iterador = iter(lista)
+
+print(next(iterador))  # 1
+print(next(iterador))  # 2
+print(next(iterador))  # 3
+# print(next(iterador)) -> daria erro StopIteration
+
+
+# 🔹 DIFERENÇA
+# Iterável -> pode ser percorrido
+# Iterador -> percorre os dados usando next()
+
+
+# 🔹 GENERATOR
+# Um generator é uma função que cria um iterador automaticamente
+# Ele usa "yield" ao invés de "return"
+
+def numeros():
+    for i in range(1, 6):
+        yield i  # retorna um valor e pausa a função
+
+
+# 🔹 USANDO GENERATOR
+for numero in numeros():
+    print(numero)  # imprime 1 até 5
+
+
+# 🔹 YIELD
+# yield funciona como return, mas:
+# - não encerra a função
+# - pausa e continua depois
+# - mantém o estado da execução
+
+
+# 🔹 RETURN vs YIELD
+
+# return -> retorna tudo e encerra
+def numeros_return():
+    return [1, 2, 3, 4, 5]
+
+print(numeros_return())
+
+
+# yield -> retorna aos poucos (mais eficiente)
+def numeros_yield():
+    for i in range(1, 6):
+        yield i
+
+
+# 🔹 USANDO next() COM GENERATOR
+gen = numeros_yield()
+
+print(next(gen))  # 1
+print(next(gen))  # 2
+print(next(gen))  # 3
+
+
+# 🔹 VANTAGENS DOS GENERATORS
+# - usam menos memória
+# - ideais para grandes volumes de dados
+# - execução sob demanda (lazy)
+
+
+# 🔹 QUANDO USAR
+# - leitura de arquivos grandes
+# - APIs (dados em tempo real)
+# - loops grandes
+# - processamento de dados
+
+
+# 🔥 RESUMO FINAL
+# Iterável -> pode ser percorrido (lista, string)
+# Iterador -> percorre usando next()
+# Generator -> cria iterador automaticamente
+# yield -> pausa e continua a função
