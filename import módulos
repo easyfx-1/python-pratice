@@ -1,0 +1,275 @@
+# Importando módulos em Python
+
+## O que é um módulo?
+
+Um módulo é simplesmente:
+
+```python
+um arquivo .py
+```
+
+que contém códigos, funções, variáveis ou classes que podem ser reutilizadas em outros arquivos.
+
+---
+
+# Por que usar módulos?
+
+Importar módulos serve para:
+
+- Organizar código
+- Reutilizar funções
+- Separar sistemas grandes
+- Deixar projetos mais profissionais
+- Evitar repetir código
+
+---
+
+# Exemplo simples
+
+## Arquivo: calculadora.py
+
+```python
+def soma(a, b):
+    return a + b
+```
+
+## Arquivo: main.py
+
+```python
+import calculadora
+
+resultado = calculadora.soma(5, 3)
+
+print(resultado)
+```
+
+### Saída:
+
+```python
+8
+```
+
+---
+
+# Como isso funciona?
+
+Quando usamos:
+
+```python
+import calculadora
+```
+
+o Python procura o arquivo:
+
+```python
+calculadora.py
+```
+
+e importa tudo que está dentro dele.
+
+---
+
+# Estrutura visual
+
+```python
+main.py
+calculadora.py
+```
+
+---
+
+# Importando funções específicas
+
+Também podemos importar apenas uma função:
+
+```python
+from calculadora import soma
+
+print(soma(10, 5))
+```
+
+### Saída:
+
+```python
+15
+```
+
+---
+
+# Diferença entre os imports
+
+## Importando o módulo inteiro
+
+```python
+import calculadora
+
+calculadora.soma(1, 2)
+```
+
+### Vantagem:
+Mais organizado e evita conflitos de nomes.
+
+---
+
+## Importando apenas a função
+
+```python
+from calculadora import soma
+
+soma(1, 2)
+```
+
+### Vantagem:
+Código menor e mais rápido de escrever.
+
+---
+
+# Exemplo com múltiplas funções
+
+## Arquivo: matematica.py
+
+```python
+def soma(a, b):
+    return a + b
+
+def subtrair(a, b):
+    return a - b
+
+def multiplicar(a, b):
+    return a * b
+```
+
+## Arquivo principal
+
+```python
+import matematica
+
+print(matematica.soma(10, 5))
+print(matematica.subtrair(10, 5))
+print(matematica.multiplicar(10, 5))
+```
+
+---
+
+# Módulos nativos do Python
+
+O Python já possui vários módulos prontos.
+
+---
+
+## Exemplo: random
+
+```python
+import random
+
+numero = random.randint(1, 10)
+
+print(numero)
+```
+
+Gera um número aleatório.
+
+---
+
+## Exemplo: time
+
+```python
+import time
+
+print('Esperando...')
+
+time.sleep(3)
+
+print('Fim')
+```
+
+O programa espera 3 segundos.
+
+---
+
+## Exemplo: os
+
+```python
+import os
+
+print(os.getcwd())
+```
+
+Mostra o diretório atual.
+
+---
+
+# Bibliotecas externas
+
+Também podemos instalar bibliotecas externas com:
+
+```bash
+pip install requests
+```
+
+Depois importar normalmente:
+
+```python
+import requests
+```
+
+---
+
+# Projetos reais usam MUITOS módulos
+
+Projetos profissionais possuem vários arquivos separados.
+
+Exemplo:
+
+```python
+login.py
+database.py
+api.py
+config.py
+main.py
+```
+
+---
+
+# Exemplo de organização
+
+## login.py
+
+```python
+def autenticar(usuario, senha):
+    return usuario == 'admin' and senha == '123'
+```
+
+## main.py
+
+```python
+import login
+
+if login.autenticar('admin', '123'):
+    print('Login realizado')
+else:
+    print('Acesso negado')
+```
+
+---
+
+# Vantagens da modularização
+
+- Código mais limpo
+- Mais fácil de entender
+- Facilita manutenção
+- Facilita trabalho em equipe
+- Reutilização de código
+- Projetos mais profissionais
+
+---
+
+# Resumo
+
+Importar módulos em Python significa:
+
+```python
+usar códigos que estão em outros arquivos
+```
+
+Isso é uma das bases da programação profissional em Python.
