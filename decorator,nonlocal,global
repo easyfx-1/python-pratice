@@ -1,0 +1,247 @@
+# ============================================
+#               ANOTAÇÕES PYTHON
+# ============================================
+
+
+# ============================================
+# VARIÁVEL LOCAL
+# ============================================
+
+# Variável criada DENTRO da função.
+# Só existe dentro dela.
+
+def exemplo():
+    nome = 'Rafael'
+    print(nome)
+
+exemplo()
+
+# print(nome) -> ERRO
+# porque a variável é local.
+
+
+# ============================================
+# VARIÁVEL GLOBAL
+# ============================================
+
+# Variável criada FORA da função.
+# Pode ser acessada pelas funções.
+
+idade = 17
+
+def mostrar_idade():
+    print(idade)
+
+mostrar_idade()
+
+
+# ============================================
+# GLOBAL
+# ============================================
+
+# O global permite ALTERAR uma variável global
+# dentro da função.
+
+dinheiro = 100
+
+def comprar():
+    global dinheiro
+
+    dinheiro -= 20
+
+comprar()
+
+print(dinheiro)
+
+# Resultado:
+# 80
+
+
+# ============================================
+# FUNÇÕES INTERNAS
+# ============================================
+
+# É uma função criada dentro de outra função.
+
+# Usamos quando:
+# - a função só faz sentido ali
+# - queremos organizar lógica
+# - usamos nonlocal
+# - fazemos decorators
+
+def pai():
+
+    def filho():
+        print('Função interna')
+
+    filho()
+
+pai()
+
+
+# ============================================
+# NONLOCAL
+# ============================================
+
+# nonlocal permite alterar uma variável
+# da função EXTERNA mais próxima.
+
+def contador():
+
+    numero = 0
+
+    def aumentar():
+
+        nonlocal numero
+
+        numero += 1
+
+        print(numero)
+
+    aumentar()
+    aumentar()
+    aumentar()
+
+contador()
+
+# Resultado:
+# 1
+# 2
+# 3
+
+
+# ============================================
+# FUNÇÃO COMO VARIÁVEL
+# ============================================
+
+# Funções podem ser guardadas em variáveis.
+
+def mensagem():
+    print('Olá')
+
+x = mensagem
+
+x()
+
+# Resultado:
+# Olá
+
+
+# ============================================
+# FUNÇÃO RECEBENDO FUNÇÃO
+# ============================================
+
+# Funções podem receber outras funções.
+
+def saudacao():
+    print('Olá')
+
+def executar(funcao):
+    funcao()
+
+executar(saudacao)
+
+
+# ============================================
+# DECORATOR
+# ============================================
+
+# Decorator é uma função que modifica
+# automaticamente outra função.
+
+# Ele adiciona comportamentos:
+# - antes
+# - depois
+# - ou ao redor da função original.
+
+def decorator(funcao):
+
+    def interna():
+
+        print('=== INÍCIO ===')
+
+        funcao()
+
+        print('=== FIM ===')
+
+    return interna
+
+
+@decorator
+def estudar():
+    print('Estudando Python')
+
+
+estudar()
+
+# Resultado:
+# === INÍCIO ===
+# Estudando Python
+# === FIM ===
+
+
+# ============================================
+# O QUE O @decorator FAZ
+# ============================================
+
+# Isso:
+
+# @decorator
+# def estudar():
+
+# é equivalente a:
+
+# estudar = decorator(estudar)
+
+
+# ============================================
+# COMO O DECORATOR FUNCIONA
+# ============================================
+
+# 1. Recebe uma função:
+#
+# def decorator(funcao)
+#
+# 2. Cria função interna:
+#
+# def interna()
+#
+# 3. Executa algo antes
+#
+# 4. Executa função original:
+#
+# funcao()
+#
+# 5. Executa algo depois
+#
+# 6. Retorna função modificada:
+#
+# return interna
+
+
+# ============================================
+# PARA QUE SERVE DECORATOR
+# ============================================
+
+# Evitar repetição de código.
+
+# Muito usado para:
+# - logs
+# - autenticação
+# - segurança
+# - validação
+# - medir tempo
+# - APIs
+# - Flask
+# - Django
+
+
+# ============================================
+# RESUMO RÁPIDO
+# ============================================
+
+# local     -> variável da própria função
+# global    -> variável do programa inteiro
+# nonlocal  -> variável da função externa
+# decorator -> modifica funções automaticamente
+# função interna -> função dentro de função
