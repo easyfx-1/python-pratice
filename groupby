@@ -1,0 +1,142 @@
+# =========================================
+# GROUPBY - AGRUPANDO DADOS (ITERTOOLS)
+# =========================================
+
+# O groupby serve para AGRUPAR valores parecidos.
+#
+# Exemplo:
+# Agrupar alunos pela nota.
+#
+# Resultado mental:
+#
+# A:
+#   Luiz
+#   João
+#
+# B:
+#   Letícia
+#   Eduardo
+#
+# -----------------------------------------
+
+# Importamos o groupby da biblioteca itertools
+from itertools import groupby
+
+
+# Lista contendo dicionários
+# Cada aluno possui:
+# - nome
+# - nota
+alunos = [
+    {'nome': 'Luiz', 'nota': 'A'},
+    {'nome': 'Letícia', 'nota': 'B'},
+    {'nome': 'Fabrício', 'nota': 'A'},
+    {'nome': 'Rosemary', 'nota': 'C'},
+    {'nome': 'Joana', 'nota': 'D'},
+    {'nome': 'João', 'nota': 'A'},
+    {'nome': 'Eduardo', 'nota': 'B'},
+    {'nome': 'André', 'nota': 'A'},
+    {'nome': 'Anderson', 'nota': 'C'},
+]
+
+
+# =========================================
+# FUNÇÃO DE ORDENAÇÃO
+# =========================================
+
+# Essa função recebe um aluno
+# e devolve a nota dele.
+#
+# Exemplo:
+#
+# entra:
+# {'nome': 'Luiz', 'nota': 'A'}
+#
+# retorna:
+# 'A'
+
+def ordena(aluno):
+    return aluno['nota']
+
+
+# =========================================
+# SORTED
+# =========================================
+
+# O groupby PRECISA que os dados estejam
+# organizados antes.
+#
+# Então usamos sorted().
+#
+# O key=ordena fala:
+#
+# "organize usando a nota"
+
+alunos_agrupados = sorted(alunos, key=ordena)
+
+
+# =========================================
+# GROUPBY
+# =========================================
+
+# Agora o groupby irá:
+#
+# pegar alunos com mesma nota
+# e agrupar juntos
+
+grupos = groupby(alunos_agrupados, key=ordena)
+
+
+# =========================================
+# LOOP PRINCIPAL
+# =========================================
+
+# chave:
+# será a nota
+#
+# grupo:
+# serão os alunos daquela nota
+
+for chave, grupo in grupos:
+
+    # Mostra a nota
+    print(chave)
+
+    # Percorre alunos daquele grupo
+    for aluno in grupo:
+        print(aluno)
+
+
+# =========================================
+# RESULTADO FINAL
+# =========================================
+
+# A
+# {'nome': 'Luiz', 'nota': 'A'}
+# {'nome': 'Fabrício', 'nota': 'A'}
+#
+# B
+# {'nome': 'Letícia', 'nota': 'B'}
+# {'nome': 'Eduardo', 'nota': 'B'}
+#
+# etc...
+
+
+# =========================================
+# RESUMO MENTAL
+# =========================================
+
+# sorted()
+# organiza os dados
+#
+# groupby()
+# junta os iguais
+#
+# key=
+# define a regra do agrupamento
+#
+# chave
+# valor usado no agrupamento
+#
+# grupo
+# itens agrupados
